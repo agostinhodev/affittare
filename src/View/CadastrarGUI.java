@@ -199,19 +199,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
 
     private void BotaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarActionPerformed
 
-        if(CampoNome.getText().length()!=0 && CampoEndereco.getText().length() != 0 && CampoValor.getText().length() != 0){
-            //if(status=200){
-                JOptionPane.showMessageDialog(this,"Cadastro Realizado com Sucesso");
-                //}
-            //if(status=400){
-                // JOptionPane.showMessageDialog(this,"Erro na Conexao com o Servidor");
-                // }
-            new PrincipalGUI().setVisible(true);
-            dispose();
-        }
-        else{
-            JOptionPane.showMessageDialog(this,"Favor Verificar os Campos!!");
-        }
+        
     }//GEN-LAST:event_BotaoCadastrarActionPerformed
 
     private void BotaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVoltarActionPerformed
