@@ -17,30 +17,36 @@ public class Api {
     public JSONObject send(String params, String method, String route){
                         
         try {
-                       
-            System.out.println(this.url);
-            URL url = new URL(this.url + route);             
+                                    
+            this.url = this.url + route; 
+            //Debug
+            System.out.println(method + ": " + this.url + " - " + params);
+            
+            URL url = (method == "POST") ? new URL(this.url) : new URL(this.url + "?" + params);             
             HttpURLConnection request = (HttpURLConnection) url.openConnection();
-            request.setConnectTimeout(5000);
-             
-            request.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); 
-            request.setDoOutput(true);
-            request.setDoInput(true);
-            request.setRequestProperty("Content-Length", Integer.toString(params.getBytes().length));
             request.setRequestMethod(method);
-                   
-            DataOutputStream dos = new DataOutputStream(request.getOutputStream());
-            dos.writeBytes(params);
-            dos.flush();
-             
-             // Lê a resposta JSON
-            InputStream in = new BufferedInputStream(request.getInputStream());
-            String response = IOUtils.toString(in, "UTF-8");
+            request.setDoOutput(true);   
+            request.setConnectTimeout(5000);             
+            request.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");            
+            request.setDoInput(true);
+            request.setRequestProperty("Content-Length", Integer.toString(params.getBytes().length));  
+            
+            if(method == "POST"){ 
+                
+                DataOutputStream out = new DataOutputStream(request.getOutputStream());
+                out.writeBytes(params);
+                out.flush();
+                out.close();                
+            }
                         
+            // Lê a resposta JSON
+            InputStream in  = new BufferedInputStream(request.getInputStream());
+            String response = IOUtils.toString(in, "UTF-8");      
+            
             JSONObject json = new JSONObject(response);     
              
             //Fecha as conexões
-            in.close();
+            in.close();            
             request.disconnect();
             
             return json;
