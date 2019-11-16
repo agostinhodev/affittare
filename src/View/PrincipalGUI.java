@@ -12,8 +12,10 @@ import View.CadastrarGUI;
 
 public class PrincipalGUI extends javax.swing.JFrame {
 
+    private final Funcionario funcionario;
     
     public PrincipalGUI(Funcionario funcionario) {
+        this.funcionario = funcionario;
         initComponents();
         jLabelNomeFuncionario.setText(funcionario.getNome());
     }
@@ -165,13 +167,16 @@ public class PrincipalGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoSairActionPerformed
 
     private void BotaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastroActionPerformed
-         new CadastrarGUI().setVisible(true);
-            dispose();
+        CadastrarGUI telaCadastro = new CadastrarGUI(this.funcionario);
+        telaCadastro.setVisible(true);
+        dispose();
     }//GEN-LAST:event_BotaoCadastroActionPerformed
 
     private void BotaoSolicitacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSolicitacoesActionPerformed
-        new SolicitacaoGUI().setVisible(true);
-            dispose();
+        
+        SolicitacaoGUI telaSolicitacoes = new SolicitacaoGUI(this.funcionario);
+        telaSolicitacoes.setVisible(true);
+        dispose();
     }//GEN-LAST:event_BotaoSolicitacoesActionPerformed
    
     
