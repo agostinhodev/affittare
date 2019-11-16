@@ -18,4 +18,16 @@ public class LocalController {
         
     }
     
+    public JSONObject novoLocal(String nome, String endereco, String valor, int funcionario, String foto){
+    
+        String params = "nome=" + nome + "&endereco=" + endereco + "&valor=" + valor + "&funcionario=" + funcionario + "&foto=" + foto;
+        String method = "POST";
+        String route  = "locais/novo";
+        
+        Api api = new Api();
+        
+        return api.send(params, method, route);
+    
+    }
+    
 }

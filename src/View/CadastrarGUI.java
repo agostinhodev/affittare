@@ -37,11 +37,11 @@ public class CadastrarGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        CampoNome = new javax.swing.JTextField();
-        CampoEndereco = new javax.swing.JTextField();
-        CampoValor = new javax.swing.JTextField();
+        jTextNome = new javax.swing.JTextField();
+        jTextEndereco = new javax.swing.JTextField();
         BotaoCadastrar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTextImagem = new javax.swing.JTextField();
+        jFormattedTextFieldValor = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanelTabela = new javax.swing.JPanel();
@@ -76,11 +76,24 @@ public class CadastrarGUI extends javax.swing.JFrame {
 
         jLabel1.setText("Imagem:");
 
+        jTextNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextNomeActionPerformed(evt);
+            }
+        });
+
         BotaoCadastrar.setBackground(new java.awt.Color(0, 204, 0));
         BotaoCadastrar.setText("Cadastrar");
         BotaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoCadastrarActionPerformed(evt);
+            }
+        });
+
+        jFormattedTextFieldValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        jFormattedTextFieldValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldValorActionPerformed(evt);
             }
         });
 
@@ -90,39 +103,29 @@ public class CadastrarGUI extends javax.swing.JFrame {
             jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFormularioCadastroLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFormularioCadastroLayout.createSequentialGroup()
+                .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelFormularioCadastroLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel7)
-                        .addGap(28, 28, 28))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFormularioCadastroLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelFormularioCadastroLayout.createSequentialGroup()
-                        .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanelFormularioCadastroLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelFormularioCadastroLayout.createSequentialGroup()
-                                .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelFormularioCadastroLayout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(jPanelFormularioCadastroLayout.createSequentialGroup()
-                                                    .addGap(177, 177, 177)
-                                                    .addComponent(BotaoVoltar)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(BotaoCadastrar))
-                                                .addComponent(CampoNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(CampoEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFormularioCadastroLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(CampoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 18, Short.MAX_VALUE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(BotaoVoltar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jFormattedTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextImagem, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BotaoCadastrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(32, 32, 32))))
         );
         jPanelFormularioCadastroLayout.setVerticalGroup(
             jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,39 +135,47 @@ public class CadastrarGUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(CampoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(CampoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(CampoValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jFormattedTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                    .addComponent(jTextImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoCadastrar)
                     .addComponent(BotaoVoltar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/images/casaNoturnaBG.png"))); // NOI18N
 
         jTableLocais.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
+        jTableLocais = new javax.swing.JTable(){
+
+            public boolean isCellEditable(int row, int col){
+
+                return false;
+
+            }
+
+        };
+        jTableLocais.setCellSelectionEnabled(true);
+        jTableLocais.setFocusable(false);
         jScrollPane1.setViewportView(jTableLocais);
 
         javax.swing.GroupLayout jPanelTabelaLayout = new javax.swing.GroupLayout(jPanelTabela);
@@ -209,7 +220,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
                     .addGroup(jPanelBackgroundLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanelFormularioCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                            .addComponent(jPanelFormularioCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
                 .addComponent(jPanelTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,7 +270,9 @@ public class CadastrarGUI extends javax.swing.JFrame {
                     for(int i = 0; i < conteudo.length(); i++){
                     
                         Object []obj= new Object[5];
-                        obj[0] = conteudo.getJSONObject(i).get("status");
+                        
+                        obj[0] = ((boolean)conteudo.getJSONObject(i).get("status") == true) ? "Ativo" : "Desativado";
+                        
                         obj[1] = conteudo.getJSONObject(i).get("nome");
                         obj[2] = conteudo.getJSONObject(i).get("endereco");
                         obj[3] = conteudo.getJSONObject(i).get("valor");
@@ -291,7 +304,66 @@ public class CadastrarGUI extends javax.swing.JFrame {
     }
     
     private void BotaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarActionPerformed
-
+        
+        if(jTextNome.getText().length() == 0){
+            
+            JOptionPane.showMessageDialog(this, "Informe o nome do local");
+                    
+        } else {
+            
+            if(jTextEndereco.getText().length() == 0){
+            
+                JOptionPane.showMessageDialog(this, "Informe o endereço");
+            
+            } else {
+            
+                if(jFormattedTextFieldValor.getText().length() == 0){
+                
+                    JOptionPane.showMessageDialog(this, "Informe o valor da locação");
+                    
+                } else {
+                    
+                    if(jTextImagem.getText().length() == 0){
+                        
+                        JOptionPane.showMessageDialog(this, "Informe o URL da imagem");
+                    
+                    } else {                        
+                                  
+                        LocalController localController = new LocalController();
+                        JSONObject json = localController.novoLocal(jTextNome.getText(), jTextEndereco.getText(), jFormattedTextFieldValor.getText(), this.funcionario.getId(), jTextImagem.getText());
+                        
+                        if(json.has("status")){
+                            
+                            try {
+                                
+                                boolean status = (boolean)json.get("status");
+                                
+                                if(status){
+                                    
+                                    this.getTodosLocais();
+                                
+                                } 
+                                
+                                JOptionPane.showMessageDialog(this, json.get("msg"));
+                                
+                            } catch (JSONException ex) {
+                                
+                                Logger.getLogger(CadastrarGUI.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        
+                        } else {
+                        
+                            JOptionPane.showMessageDialog(this, "Não existe uma informação de status");
+                            
+                        }
+                        
+                    }
+                    
+                }
+            
+            }
+                
+        }
         
     }//GEN-LAST:event_BotaoCadastrarActionPerformed
 
@@ -304,6 +376,14 @@ public class CadastrarGUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_BotaoVoltarActionPerformed
 
+    private void jTextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextNomeActionPerformed
+
+    private void jFormattedTextFieldValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldValorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -315,9 +395,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoCadastrar;
     private javax.swing.JButton BotaoVoltar;
-    private javax.swing.JTextField CampoEndereco;
-    private javax.swing.JTextField CampoNome;
-    private javax.swing.JTextField CampoValor;
+    private javax.swing.JFormattedTextField jFormattedTextFieldValor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -330,6 +408,8 @@ public class CadastrarGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelTabela;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLocais;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextEndereco;
+    private javax.swing.JTextField jTextImagem;
+    private javax.swing.JTextField jTextNome;
     // End of variables declaration//GEN-END:variables
 }
