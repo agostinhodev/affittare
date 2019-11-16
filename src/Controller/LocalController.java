@@ -8,7 +8,7 @@ public class LocalController {
     public JSONObject getTodosLocais(){
         
         /*Parâmetros da Requisição*/
-        String params = "a=1";
+        String params = "";
         String method = "GET";
         String route  = "locais/todos";
         
