@@ -35,7 +35,7 @@ public class LoginGUI extends javax.swing.JFrame {
         jTextSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("LOGIN");
+        setTitle("Affittare - Login");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(139, 0, 139));
         setResizable(false);
@@ -53,18 +53,40 @@ public class LoginGUI extends javax.swing.JFrame {
 
         jButtonEntrar.setBackground(new java.awt.Color(0, 204, 0));
         jButtonEntrar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEntrar.setText("Entrar");
+        jButtonEntrar.setText("ENTRAR");
         jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEntrarActionPerformed(evt);
+            }
+        });
+        jButtonEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButtonEntrarKeyPressed(evt);
             }
         });
 
         jLabelEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelEmail.setText("E-mail:");
 
+        jTextEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextEmailActionPerformed(evt);
+            }
+        });
+        jTextEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextEmailKeyPressed(evt);
+            }
+        });
+
         jLabelSenha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelSenha.setText("Senha:");
+
+        jTextSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextSenhaKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCaixaLoginLayout = new javax.swing.GroupLayout(jPanelCaixaLogin);
         jPanelCaixaLogin.setLayout(jPanelCaixaLoginLayout);
@@ -198,6 +220,40 @@ public class LoginGUI extends javax.swing.JFrame {
         }        
                 
     }//GEN-LAST:event_jButtonEntrarActionPerformed
+
+    private void jTextEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextEmailActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextEmailActionPerformed
+
+    private void jButtonEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButtonEntrarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEntrarKeyPressed
+
+    private void jTextEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextEmailKeyPressed
+        // TODO add your handling code here:
+        
+        int tecla = evt.getKeyCode();
+        
+        if(tecla == 10 && jTextEmail.getText().length() > 0){
+        
+            jTextSenha.requestFocus();
+        
+        }
+        
+    }//GEN-LAST:event_jTextEmailKeyPressed
+
+    private void jTextSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextSenhaKeyPressed
+        // TODO add your handling code here:
+        
+        int tecla = evt.getKeyCode();
+        
+        if(tecla == 10 && jTextSenha.getText().length() > 0){
+        
+            jButtonEntrar.doClick();
+        
+        }
+    }//GEN-LAST:event_jTextSenhaKeyPressed
 
    
     public static void main(String args[]) {

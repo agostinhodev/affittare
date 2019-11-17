@@ -49,7 +49,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
         jTableLocais = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("CADASTRO DE LOCAIS");
+        setTitle("Affittare - Cadastro de Locais");
         setResizable(false);
 
         jPanelBackground.setBackground(new java.awt.Color(139, 0, 139));
@@ -58,7 +58,8 @@ public class CadastrarGUI extends javax.swing.JFrame {
         jPanelFormularioCadastro.setPreferredSize(new java.awt.Dimension(600, 300));
 
         BotaoVoltar.setBackground(new java.awt.Color(255, 0, 0));
-        BotaoVoltar.setText("Voltar");
+        BotaoVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoVoltar.setText("VOLTAR");
         BotaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoVoltarActionPerformed(evt);
@@ -83,7 +84,8 @@ public class CadastrarGUI extends javax.swing.JFrame {
         });
 
         BotaoCadastrar.setBackground(new java.awt.Color(0, 204, 0));
-        BotaoCadastrar.setText("Cadastrar");
+        BotaoCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoCadastrar.setText("CADASTRAR");
         BotaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoCadastrarActionPerformed(evt);
@@ -150,8 +152,8 @@ public class CadastrarGUI extends javax.swing.JFrame {
                     .addComponent(jTextImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFormularioCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotaoCadastrar)
-                    .addComponent(BotaoVoltar))
+                    .addComponent(BotaoVoltar)
+                    .addComponent(BotaoCadastrar))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -184,31 +186,34 @@ public class CadastrarGUI extends javax.swing.JFrame {
             jPanelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTabelaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelTabelaLayout.setVerticalGroup(
             jPanelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelTabelaLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTabelaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanelBackgroundLayout = new javax.swing.GroupLayout(jPanelBackground);
         jPanelBackground.setLayout(jPanelBackgroundLayout);
         jPanelBackgroundLayout.setHorizontalGroup(
             jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackgroundLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanelBackgroundLayout.createSequentialGroup()
+            .addGroup(jPanelBackgroundLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBackgroundLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanelFormularioCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelTabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanelFormularioCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelBackgroundLayout.createSequentialGroup()
+                        .addComponent(jPanelTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanelBackgroundLayout.setVerticalGroup(
             jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,16 +227,16 @@ public class CadastrarGUI extends javax.swing.JFrame {
                         .addGroup(jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanelFormularioCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 924, Short.MAX_VALUE)
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 932, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,6 +308,15 @@ public class CadastrarGUI extends javax.swing.JFrame {
         
     }
     
+    private void limparFormulario(){
+    
+        jTextNome.setText("");
+        jTextEndereco.setText("");
+        jFormattedTextFieldValor.setText("");
+        jTextImagem.setText("");;
+        
+    }
+    
     private void BotaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarActionPerformed
         
         if(jTextNome.getText().length() == 0){
@@ -341,6 +355,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
                                 if(status){
                                     
                                     this.getTodosLocais();
+                                    this.limparFormulario();                                    
                                 
                                 } 
                                 

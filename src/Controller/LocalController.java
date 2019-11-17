@@ -1,6 +1,7 @@
 package Controller;
 
 import Api.Api;
+import javax.swing.JOptionPane;
 import org.json.JSONObject;
 
 public class LocalController {
@@ -19,7 +20,7 @@ public class LocalController {
     }
     
     public JSONObject novoLocal(String nome, String endereco, String valor, int funcionario, String foto){
-    
+            
         String params = "nome=" + nome + "&endereco=" + endereco + "&valor=" + valor + "&funcionario=" + funcionario + "&foto=" + foto;
         String method = "POST";
         String route  = "locais/novo";
