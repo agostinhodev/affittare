@@ -259,12 +259,12 @@ public class CadastroGUI extends javax.swing.JFrame {
                 
                 DefaultTableModel modelo = new DefaultTableModel();
                 
+                modelo.addColumn("ID:");
                 modelo.addColumn("Status:");
                 modelo.addColumn("Nome:");
                 modelo.addColumn("Endereço:");
                 modelo.addColumn("Valor:");
                 modelo.addColumn("Funcionário:");
-                modelo.addColumn("Ação:");
                 
                 jTableLocais.setModel(modelo);
                 
@@ -276,14 +276,12 @@ public class CadastroGUI extends javax.swing.JFrame {
                     
                         Object []obj= new Object[6];
                         
-                        obj[0] = ((boolean)conteudo.getJSONObject(i).get("status") == true) ? "Ativo" : "Desativado";
-                        
-                        obj[1] = conteudo.getJSONObject(i).get("nome");
-                        obj[2] = conteudo.getJSONObject(i).get("endereco");
-                        obj[3] = conteudo.getJSONObject(i).get("valor");
-                        obj[4] = conteudo.getJSONObject(i).get("funcionario");
-                        obj[5] = new JButton("EDITAR");                        
-                        
+                        obj[0] = (int)conteudo.getJSONObject(i).get("id");
+                        obj[1] = ((boolean)conteudo.getJSONObject(i).get("status") == true) ? "Ativo" : "Desativado";                        
+                        obj[2] = conteudo.getJSONObject(i).get("nome");
+                        obj[3] = conteudo.getJSONObject(i).get("endereco");
+                        obj[4] = conteudo.getJSONObject(i).get("valor");
+                        obj[5] = conteudo.getJSONObject(i).get("funcionario");
                         modelo.addRow(obj);
                         
                     }

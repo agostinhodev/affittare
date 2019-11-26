@@ -5,7 +5,15 @@
  */
 package View;
 
+import Controller.SolicitacaoController;
 import Model.Funcionario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -19,10 +27,68 @@ public class SolicitacaoGUI extends javax.swing.JFrame {
      * Creates new form Solicitacao
      */
     public SolicitacaoGUI(Funcionario funcionario) {
+        
         this.funcionario = funcionario;
         initComponents();
+        this.getSolicitacoes();
+        
     }
 
+    private void getSolicitacoes(){
+    
+        SolicitacaoController solicitacao = new SolicitacaoController();
+        JSONObject json = solicitacao.getSolicitacoes(this.funcionario.getId(), 0);
+        try {
+            
+            if(json.has("status")){
+
+                DefaultTableModel modelo = new DefaultTableModel();
+
+                modelo.addColumn("ID:");
+                modelo.addColumn("Valor:");
+                modelo.addColumn("Data Interesse:");
+                modelo.addColumn("Data Solicitação:");
+                modelo.addColumn("Cliente:");
+                modelo.addColumn("Local:");    
+                modelo.addColumn("Endereço:"); 
+
+                jTableSolicitacoes.setModel(modelo);
+                
+                if((boolean)json.get("status") && json.has("conteudo")){
+                
+                    JSONArray conteudo = json.getJSONArray("conteudo");
+                    
+                     for(int i = 0; i < conteudo.length(); i++){
+                    
+                        Object []obj= new Object[7];
+                        
+                        obj[0] = (int)conteudo.getJSONObject(i).get("id");                      
+                        obj[1] = conteudo.getJSONObject(i).get("valor");
+                        obj[2] = conteudo.getJSONObject(i).get("data_interesse");
+                        obj[3] = conteudo.getJSONObject(i).get("data_solicitacao");
+                        obj[4] = conteudo.getJSONObject(i).get("cliente");
+                        obj[5] = conteudo.getJSONObject(i).get("nomeLocal");
+                        obj[6] = conteudo.getJSONObject(i).get("endereco");
+                        modelo.addRow(obj);
+                        
+                    }
+                    
+                } else {
+                
+                    JOptionPane.showMessageDialog(this, json.get("msg"));
+                    
+                }
+
+            }
+        
+         } catch (JSONException ex) {
+             
+            Logger.getLogger(SolicitacaoGUI.class.getName()).log(Level.SEVERE, null, ex);
+         
+         }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,91 +99,125 @@ public class SolicitacaoGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        BotaoVoltar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableSolicitacoes = new javax.swing.JTable();
+        jButtonAprovar = new javax.swing.JButton();
+        jButtonReprovar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(139, 0, 139));
+        jPanel1.setPreferredSize(new java.awt.Dimension(950, 540));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setPreferredSize(new java.awt.Dimension(600, 300));
 
-        BotaoVoltar.setBackground(new java.awt.Color(255, 0, 0));
-        BotaoVoltar.setText("Voltar");
-        BotaoVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoVoltarActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Viner Hand ITC", 0, 36)); // NOI18N
-        jLabel7.setText("Solicitações");
+        jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 0, 36)); // NOI18N
+        jLabel2.setText("Solicitações de Reserva");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BotaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(0, 379, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(316, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(232, 232, 232))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotaoVoltar)
-                .addGap(25, 25, 25))
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(16, 16, 16))
         );
+
+        jTableSolicitacoes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jTableSolicitacoes = new javax.swing.JTable(){
+
+            public boolean isCellEditable(int row, int col){
+
+                return false;
+
+            }
+
+        };
+        jScrollPane1.setViewportView(jTableSolicitacoes);
+
+        jButtonAprovar.setBackground(new java.awt.Color(0, 204, 0));
+        jButtonAprovar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonAprovar.setText("APROVAR");
+
+        jButtonReprovar.setBackground(new java.awt.Color(255, 0, 0));
+        jButtonReprovar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonReprovar.setText("REPROVAR");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(161, 161, 161)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonReprovar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButtonAprovar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(511, 511, 511)))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jLabel6)
-                .addContainerGap(589, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonAprovar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonReprovar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BotaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoVoltarActionPerformed
-        PrincipalGUI principal = new PrincipalGUI(this.funcionario);
-        principal.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_BotaoVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,10 +227,13 @@ public class SolicitacaoGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoVoltar;
+    private javax.swing.JButton jButtonAprovar;
+    private javax.swing.JButton jButtonReprovar;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableSolicitacoes;
     // End of variables declaration//GEN-END:variables
 }
