@@ -27,7 +27,7 @@ public class SolicitacaoController {
             case 0:
             default:
                 
-                route  = "/locais/solicitacoes/pendentes";
+                route  = "locais/solicitacoes/pendentes";
                 
             break;            
         }       
@@ -35,6 +35,18 @@ public class SolicitacaoController {
         Api api = new Api();        
         return api.send(params, method, route);            
             
+    }
+    
+    public JSONObject aprovarReprovar(int status, int funcionario, int id){
+        
+        /*Parâmetros da Requisição*/
+        String params = "status=" + status + "&funcionario=" + funcionario + "&id=" + id;
+        String method = "POST";
+        String route  = "locais/solicitacoes/aprovarReprovar";
+        
+        Api api = new Api();        
+        return api.send(params, method, route);          
+    
     }
     
 }

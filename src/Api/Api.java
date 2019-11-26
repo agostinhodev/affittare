@@ -60,7 +60,11 @@ public class Api {
                 
             }
                          
+            
+            
             String response = IOUtils.toString(in, "UTF-8"); 
+            
+            System.out.println("API DEBUG: " + response);
             JSONObject json = new JSONObject(response);     
              
             //Fecha as conexões

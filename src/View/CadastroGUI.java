@@ -58,8 +58,8 @@ public class CadastroGUI extends javax.swing.JFrame {
         jPanelFormularioCadastro.setBackground(new java.awt.Color(255, 255, 255));
         jPanelFormularioCadastro.setPreferredSize(new java.awt.Dimension(600, 300));
 
-        BotaoVoltar.setBackground(new java.awt.Color(255, 0, 0));
-        BotaoVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoVoltar.setBackground(new java.awt.Color(255, 193, 7));
+        BotaoVoltar.setForeground(new java.awt.Color(33, 37, 41));
         BotaoVoltar.setText("VOLTAR");
         BotaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
