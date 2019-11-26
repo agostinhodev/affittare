@@ -6,10 +6,10 @@ import org.json.JSONObject;
 
 public class LocalController {
     
-    public JSONObject getTodosLocais(){
+    public JSONObject getTodosLocais(int funcionario){
         
         /*Parâmetros da Requisição*/
-        String params = "";
+        String params = "funcionario=" + funcionario;
         String method = "GET";
         String route  = "locais/todos";
         

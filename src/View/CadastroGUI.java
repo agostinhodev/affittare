@@ -4,6 +4,7 @@ import Controller.LocalController;
 import Model.Funcionario;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.json.JSONArray;
@@ -14,11 +15,11 @@ import org.json.JSONObject;
  *
  * @author Arthur
  */
-public class CadastrarGUI extends javax.swing.JFrame {
+public class CadastroGUI extends javax.swing.JFrame {
 
     private final Funcionario funcionario;
 
-    public CadastrarGUI(Funcionario funcionario) {
+    public CadastroGUI(Funcionario funcionario) {
         this.funcionario = funcionario;
         initComponents();
         this.getTodosLocais();
@@ -193,7 +194,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
             jPanelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTabelaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -229,18 +230,18 @@ public class CadastrarGUI extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 932, Short.MAX_VALUE)
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 950, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -250,7 +251,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
     private void getTodosLocais(){
     
         LocalController local = new LocalController();
-        JSONObject json = local.getTodosLocais();
+        JSONObject json = local.getTodosLocais(this.funcionario.getId());
                                   
         try {
 
@@ -263,18 +264,17 @@ public class CadastrarGUI extends javax.swing.JFrame {
                 modelo.addColumn("Endereço:");
                 modelo.addColumn("Valor:");
                 modelo.addColumn("Funcionário:");
+                modelo.addColumn("Ação:");
                 
                 jTableLocais.setModel(modelo);
                 
                 if((boolean)json.get("status") && json.has("conteudo")){
                                 
                     JSONArray conteudo = json.getJSONArray("conteudo");
-                    
-                    System.out.println(conteudo.getJSONObject(0).get("nome"));
-                    
+                                        
                     for(int i = 0; i < conteudo.length(); i++){
                     
-                        Object []obj= new Object[5];
+                        Object []obj= new Object[6];
                         
                         obj[0] = ((boolean)conteudo.getJSONObject(i).get("status") == true) ? "Ativo" : "Desativado";
                         
@@ -282,6 +282,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
                         obj[2] = conteudo.getJSONObject(i).get("endereco");
                         obj[3] = conteudo.getJSONObject(i).get("valor");
                         obj[4] = conteudo.getJSONObject(i).get("funcionario");
+                        obj[5] = new JButton("EDITAR");                        
                         
                         modelo.addRow(obj);
                         
@@ -289,7 +290,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
                    
                 } else {
                     
-                                        
+                    JOptionPane.showMessageDialog(this, json.get("msg"));
                     
                 }
                  
@@ -301,7 +302,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
 
         } catch (JSONException ex) {
 
-            Logger.getLogger(CadastrarGUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CadastroGUI.class.getName()).log(Level.SEVERE, null, ex);
 
         }          
         
@@ -363,7 +364,7 @@ public class CadastrarGUI extends javax.swing.JFrame {
                                 
                             } catch (JSONException ex) {
                                 
-                                Logger.getLogger(CadastrarGUI.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(CadastroGUI.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         
                         } else {

@@ -4,7 +4,6 @@ package Api;
 import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.swing.JOptionPane;
@@ -48,12 +47,15 @@ public class Api {
                         
             // Lê a resposta JSON
             InputStream in;
+            
+            System.out.println(request.getResponseCode());
+            
             if (request.getResponseCode() < HttpURLConnection.HTTP_BAD_REQUEST) {
                 
                 in = new BufferedInputStream(request.getInputStream());
                 
             } else {
-                 /* error from server */
+                
                 in = new BufferedInputStream(request.getErrorStream());
                 
             }

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import static java.lang.Character.toUpperCase;
 import javax.swing.JOptionPane;
 import View.SolicitacaoGUI;
-import View.CadastrarGUI;
+import View.CadastroGUI;
 
 public class PrincipalGUI extends javax.swing.JFrame {
 
@@ -191,14 +191,14 @@ public class PrincipalGUI extends javax.swing.JFrame {
 
     private void BotaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSairActionPerformed
         
-        JOptionPane.showMessageDialog(this, "Saindo...");
         LoginGUI telaLogin = new LoginGUI();
         telaLogin.setVisible(true);
         dispose();
+        
     }//GEN-LAST:event_BotaoSairActionPerformed
 
     private void BotaoCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastroActionPerformed
-        CadastrarGUI telaCadastro = new CadastrarGUI(this.funcionario);
+        CadastroGUI telaCadastro = new CadastroGUI(this.funcionario);
         telaCadastro.setVisible(true);
         dispose();
     }//GEN-LAST:event_BotaoCadastroActionPerformed
