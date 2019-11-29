@@ -54,6 +54,15 @@ public class LoginGUI extends javax.swing.JFrame {
         jButtonEntrar.setBackground(new java.awt.Color(0, 204, 0));
         jButtonEntrar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEntrar.setText("ENTRAR");
+        jButtonEntrar.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jButtonEntrarAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEntrarActionPerformed(evt);
@@ -124,7 +133,7 @@ public class LoginGUI extends javax.swing.JFrame {
                 .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelBackgroundLayout = new javax.swing.GroupLayout(jPanelBackground);
@@ -157,6 +166,8 @@ public class LoginGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
                  
         if(jTextEmail.getText().length() == 0){
@@ -254,6 +265,12 @@ public class LoginGUI extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_jTextSenhaKeyPressed
+
+    private void jButtonEntrarAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jButtonEntrarAncestorAdded
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButtonEntrarAncestorAdded
 
    
     public static void main(String args[]) {
