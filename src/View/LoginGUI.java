@@ -33,6 +33,8 @@ public class LoginGUI extends javax.swing.JFrame {
         jTextEmail = new javax.swing.JTextField();
         jLabelSenha = new javax.swing.JLabel();
         jTextSenha = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Affittare - Login");
@@ -48,7 +50,7 @@ public class LoginGUI extends javax.swing.JFrame {
         jPanelCaixaLogin.setBackground(new java.awt.Color(255, 255, 255));
         jPanelCaixaLogin.setPreferredSize(new java.awt.Dimension(600, 300));
 
-        jLabelLogin.setFont(new java.awt.Font("Viner Hand ITC", 0, 36)); // NOI18N
+        jLabelLogin.setFont(new java.awt.Font("Viner Hand ITC", 0, 24)); // NOI18N
         jLabelLogin.setText("Login");
 
         jButtonEntrar.setBackground(new java.awt.Color(0, 204, 0));
@@ -97,25 +99,42 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Não tem acesso?");
+
+        jButton1.setBackground(new java.awt.Color(153, 0, 153));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("CADASTRE-SE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelCaixaLoginLayout = new javax.swing.GroupLayout(jPanelCaixaLogin);
         jPanelCaixaLogin.setLayout(jPanelCaixaLoginLayout);
         jPanelCaixaLoginLayout.setHorizontalGroup(
             jPanelCaixaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCaixaLoginLayout.createSequentialGroup()
-                .addGroup(jPanelCaixaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelCaixaLoginLayout.createSequentialGroup()
+                .addGroup(jPanelCaixaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCaixaLoginLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCaixaLoginLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelSenha))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCaixaLoginLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanelCaixaLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelSenha)
-                            .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelEmail)))
-                    .addGroup(jPanelCaixaLoginLayout.createSequentialGroup()
-                        .addGap(95, 95, 95)
+                            .addComponent(jTextEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                            .addComponent(jTextSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                            .addComponent(jLabelEmail)
+                            .addComponent(jButtonEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCaixaLoginLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
                         .addComponent(jLabelLogin))
-                    .addGroup(jPanelCaixaLoginLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelCaixaLoginLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanelCaixaLoginLayout.setVerticalGroup(
@@ -123,17 +142,21 @@ public class LoginGUI extends javax.swing.JFrame {
             .addGroup(jPanelCaixaLoginLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelLogin)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelSenha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout jPanelBackgroundLayout = new javax.swing.GroupLayout(jPanelBackground);
@@ -150,13 +173,10 @@ public class LoginGUI extends javax.swing.JFrame {
         jPanelBackgroundLayout.setVerticalGroup(
             jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBackgroundLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelBackgroundLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanelCaixaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelBackgroundLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(labelLogo)))
+                    .addComponent(jPanelCaixaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelLogo))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -272,6 +292,15 @@ public class LoginGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonEntrarAncestorAdded
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        SignUpGUI cadastro = new SignUpGUI();
+        cadastro.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
    
     public static void main(String args[]) {
         
@@ -281,7 +310,9 @@ public class LoginGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonEntrar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelLogin;
     private javax.swing.JLabel jLabelSenha;

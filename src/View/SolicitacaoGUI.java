@@ -43,7 +43,7 @@ public class SolicitacaoGUI extends javax.swing.JFrame {
             if(json.has("status")){
 
                 DefaultTableModel modelo = new DefaultTableModel();
-
+               
                 modelo.addColumn("ID:");
                 modelo.addColumn("Valor:");
                 modelo.addColumn("Data Interesse:");
@@ -108,7 +108,9 @@ public class SolicitacaoGUI extends javax.swing.JFrame {
         jButtonReprovar = new javax.swing.JButton();
         jButtonVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Affittare - Solicitações Pendentes");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(139, 0, 139));
@@ -156,6 +158,7 @@ public class SolicitacaoGUI extends javax.swing.JFrame {
             }
 
         };
+        jTableSolicitacoes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(jTableSolicitacoes);
 
         jButtonAprovar.setBackground(new java.awt.Color(0, 204, 0));
