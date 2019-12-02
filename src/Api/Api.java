@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public class Api {
     
-    private String url = "http://192.168.0.58:3131/";
+    private String url = "http://134.209.38.55:3131/";
     private String charset  = "UTF-8";
     private String chraset2 = "ISO-8859-1";
         
